@@ -27,7 +27,29 @@
 
         fetch('https://deezerdevs-deezer.p.rapidapi.com/search?q=daft%20punk', options)
             .then(response => response.json())
-            .then(response => console.log(response))
+            .then(songList => {console.log(songList)
+                const grid = document.querySelector(".container > .row")
+
+                    for (let i = 0; i < songList.length; i++) {
+                        const song = songList[i]
+
+                        const col = document.createElement("div")
+                        col.className = "col-sm-6 col-md-4 col-lg-3"
+
+                        col.innerHTML = `
+                                    <div class="card">
+                                        <img src=${song.img} class="card-img-top" alt=${song.title}>
+                                        <div class="card-body">
+                                            <h5 class="card-title">${song.title}</h5>
+                                            <p class="card-text">${song.category}</p>
+                                            <a href="#" class="btn btn-primary">$${song.price}</a>
+                                        </div>
+                                    </div>
+                    `
+
+                        grid.appendChild(col)
+                    }
+            })
             .catch(err => console.error(err));
     </script>
   </body>
