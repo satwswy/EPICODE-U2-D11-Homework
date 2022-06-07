@@ -89,45 +89,43 @@
         //     }
         //     })
         //     .catch(err => console.log(err))
-            
-        const options = {
+
+                
+                
+ const options = {
             method: 'GET',
             headers: {
                 'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com',
                 'X-RapidAPI-Key': 'd1c124b712msh0f715cbd0123e41p17d0f6jsn02147a5bea7e'
             }
-            };
+        };
 
-            fetch('https://deezerdevs-deezer.p.rapidapi.com/search?q=pink%20floyd', options)
-                .then(response => response.json())
-                .then(music2 => {console.log(response)
-                    const grid = document.querySelector(".container > .row")
+        fetch('https://deezerdevs-deezer.p.rapidapi.com/search?q=pink%20floyd', options)
+            .then(response => response.json())
+            .then(musicList => {console.log(musicList)
+                const grid = document.querySelector(".container > .row")
 
-                for (let i = 0; i < music2.data.length; i++) {
-                    const music2 = music2.data[i]
+            for (let i = 0; i < musicList.data.length; i++) {
+                const music = musicList.data[i]
 
-                    const col = document.createElement("div")
-                    col.className = "col-sm-6 col-md-4 col-lg-3"
+                const col = document.createElement("div")
+                col.className = "col-sm-6 col-md-4 col-lg-3"
 
-                    col.innerHTML = `
-                <div class="card">
-                    <img src=${music2.album.cover} class="card-img-top" alt=${music2.album.title}>
-                    <div class="card-body">
-                        <h5 class="card-title">${music2.album.title}</h5>
-                        <p class="card-text">${music2.category}</p>
-                        <a href="#" class="btn btn-primary">$${music2.price}</a>
-                    </div>
-                </div>
-`
+                col.innerHTML = `
+                            <div class="card">
+                                <img src=${music.album.cover} class="card-img-top" alt=${music.album.title}>
+                                <div class="card-body">
+                                    <h5 class="card-title">${music.album.title}</h5>
+                                    <p class="card-text">${music.category}</p>
+                                    <a href="#" class="btn btn-primary">$${music.price}</a>
+                                </div>
+                            </div>
+            `
 
-    grid.appendChild(col)
-}
-})
-.catch(err => console.log(err))
-
-                
-                
- 
+                grid.appendChild(col)
+            }
+            })
+            .catch(err => console.log(err))
 
 
     
