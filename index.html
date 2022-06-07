@@ -16,44 +16,44 @@
         <div class="row">
             <!-- BOOKS WILL BE GENERATED HERE -->
         </div>
-    
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <script>
-        // const options = {
-        //     method: 'GET',
-        //     headers: {
-        //         'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com',
-        //         'X-RapidAPI-Key': 'd1c124b712msh0f715cbd0123e41p17d0f6jsn02147a5bea7e'
-        //     }
-        // };
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com',
+                'X-RapidAPI-Key': 'd1c124b712msh0f715cbd0123e41p17d0f6jsn02147a5bea7e'
+            }
+        };
 
-        // fetch('https://deezerdevs-deezer.p.rapidapi.com/search?q=daft%20punk', options)
-        //     .then(response => response.json())
-        //     .then(songList => {console.log(songList)
-        //         const grid = document.querySelector(".container > .row")
+        fetch('https://deezerdevs-deezer.p.rapidapi.com/search?q=daft%20punk', options)
+            .then(response => response.json())
+            .then(songList => {console.log(songList)
+                const grid = document.querySelector(".container > .row")
 
-        //             for (let i = 0; i < songList.data.length; i++) {
-        //                 const song = songList.data[i]
+                    for (let i = 0; i < songList.data.length; i++) {
+                        const song = songList.data[i]
 
-        //                 const col = document.createElement("div")
-        //                 col.className = "col-sm-6 col-md-4 col-lg-3"
+                        const col = document.createElement("div")
+                        col.className = "col-sm-6 col-md-4 col-lg-3"
 
-        //                 col.innerHTML = `
-        //                             <div class="card">
-        //                                 <img src=${song.album.cover} class="card-img-top" alt=${song.album.title}>
-        //                                 <div class="card-body">
-        //                                     <h5 class="card-title">${song.album.title}</h5>
-        //                                     <p class="card-text">${song.category}</p>
-        //                                     <a href="#" class="btn btn-primary">$${song.price}</a>
-        //                                 </div>
-        //                             </div>
-        //             `
+                        col.innerHTML = `
+                                    <div class="card">
+                                        <img src=${song.album.cover} class="card-img-top" alt=${song.album.title}>
+                                        <div class="card-body">
+                                            <h5 class="card-title">${song.album.title}</h5>
+                                            <p class="card-text">${song.title}</p>
+                                            <a href="#" class="btn btn-primary">$${song.duration/60}</a>
+                                        </div>
+                                    </div>
+                    `
 
-        //                 grid.appendChild(col)
-        //             }
-        //     })
-        //     .catch(err => console.error(err));
+                        grid.appendChild(col)
+                    }
+            })
+            .catch(err => console.error(err));
 
         // const options = {
         //     method: 'GET',
